@@ -1,0 +1,19 @@
+- hosts: all
+  vars_prompt:
+  - name: ip
+    prompt: "Enter the ip of cloud"
+    private: false
+  tasks:
+  - shell: "iscsiadm --mode discoverydb --type sendtargets --portal {{ip}} --discover"
+    register: x
+#  - debug:
+#      var: x.stdout
+  - copy:
+      content: "{{x.stdout}}"
+      dest: "data.txt"
+  - command: "./data.py"
+    register: y
+#  - debug:
+#      var: y.stdout_lines[0]
+  - shell: "iscsiadm --mode node --targetname {{y.stdout_lines[1]}} --portal {{y.stdout_lines[0]}} --logout"
+

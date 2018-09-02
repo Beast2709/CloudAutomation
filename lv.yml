@@ -1,0 +1,58 @@
+- hosts: localhost
+  vars_prompt:
+  - name: csize
+    prompt: "Enter the size of lv"
+    private: false
+  - name: csizeunit
+    prompt: "IN G and M "
+    private: false
+  - name: drive
+    prompt: "mount point and drive name"
+    private: false
+  - name: clientip
+    private : false
+
+  tasks:  
+  - name: lvcreate
+    lvol:
+     vg: def_vg
+     lv: "{{drive}}"
+     size: "{{ csize }}{{ csizeunit }}"
+  
+  - name: filesystem  
+    filesystem: 
+     fstype: ext4
+     dev: "/dev/def_vg/{{drive}}"
+  
+  - name: mounting
+    mount: 
+     name: "/{{drive}}"
+     src: "/dev/def_vg/{{drive}}"
+     fstype: ext4
+     state: mounted
+  
+  - name: firewall
+    service: 
+      name: "firewalld"
+      state: "stopped"
+  
+  - name: service
+    service:
+      name: "nfs"
+      state: "started"
+      enabled: "true"
+
+  - name: file
+    lineinfile:
+        path: /etc/exports
+        create: yes
+        line: "/{{drive}} {{ clientip }}(rw,no_root_squash)"
+        state: present
+  - name: "export nfs"
+    command: "exportfs -rv"
+ 
+  - name: service
+    service: 
+      name: "nfs"
+      state: "restarted"
+      enabled: "true"  

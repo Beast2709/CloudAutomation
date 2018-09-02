@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Registration</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<style>
+ .container {
+   padding : 0px;
+   }
+input[type=radio]{
+padding:5px;
+margin : 5px 10px 25px 10px;
+}
+
+
+input[type=text],input[type=email]
+{
+
+padding: 2px;
+margin : 5px 10px 22px 10px;
+}
+</style>
+
+<body  style="background:url(reg3.jpg); background-attachment:fixed; background-repeat:repeat; background-size:100%;">
+<div class="col-md-6" style="margin-top:10px;" >
+<div>
+<h1 style="font-family:Times New Roman; color:white;font-size:40px; margin-left:80px;"><b>Registration Page</b></h1>
+</div>
+
+<div class=" container-fluid" >
+        	
+  <form class="form-horizontal" style="margin-top:40px;" ">
+								  <div class="form-group">
+		                          <label class="control-label col-sm-4" for="usr"style="color:white;" >Name:</label>
+										  <div class="col-sm-8">          
+										  <input type="text" class="form-control" id="usr" placeholder="Enter your Name" name="name">
+										  </div>
+		                          </div>
+								  <div class="form-group">
+								  <label class="control-label col-sm-4" for="email" style="color:white;">Email:</label>
+										  <div class="col-sm-8">
+									      <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+										  </div>
+								  </div>
+								  <div class="form-group">
+								  <label  class="control-label col-sm-4" for="contact" style="color:white;" >Contact No:</label>
+										  <div class="col-sm-8" >
+										  <input type="text"  class="form-control" id="message" name="contact" placeholder="Enter Your Mobile Number" maxlength="10" minlength="10">
+										  </div>
+						          </div>
+  
+								  <div class="form-group">
+								  <label  class="control-label col-sm-4" for="message" style="color:white;">Gender:</label>
+										  <div class="col-sm-8">
+										  <input type="radio" name="gender" value="male" checked="yes"/>Male
+					                      <input type="radio" name="gender" value="female" />Female<br/>
+										  </div>
+						          </div>
+						  
+								  <div class="form-group">
+								  <label  class="control-label col-sm-4" for="message" style="color:white;">Password:</label>
+										  <div class="col-sm-8">
+										  <input type="pwd"  class="form-control" id="pwd" name="contact" placeholder="Enter Your Password" >
+										  </div>
+						          </div>
+						  
+  
+    
+						  
+								  <div class="form-group">        
+										  <div class="col-sm-offset-2 col-sm-3">
+										  </div>
+											  <div class="col-sm-offset-2 col-sm-6">
+											  <center><button type="submit" formaction="http://192.168.43.86" style="color:black;" class="btn btn-default">PROCEED TO LOGIN</button></center>
+											  </div>
+										  <div class="col-sm-offset-2 col-sm-3">
+										  </div>
+								  </div>
+						</form>
+			</div>
+			
+			
+</div>			
+			
+			
+			<div class="col-md-6" style="margin-top:30px;" >
+						 
+						  <center><iframe src="http://192.168.43.86:1239" width="450" height="550" >
+		                  </iframe></center>
+						
+		    </div>
+</div>
+
+</body>
+</html>
+
+<!--
+    <div class="form-group">
+      <label for="pwd">Password:</label>
+      <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd">
+    </div>-->

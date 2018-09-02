@@ -1,0 +1,48 @@
+- hosts: localhost
+  vars_prompt:
+  - name: csize
+    prompt: "Enter the size of lv"
+    private: false
+  - name: csizeunit
+    prompt: "IN G and M "
+    private: false
+  - name: cloud
+    prompt: "Enter the name of your cloud"
+    private: false
+  tasks:
+  - package:
+      name: "{{item}}"
+      state: present
+    with_items:
+     - epel-release
+     - scsi-target-utils
+  - name: lvcreate
+    lvol:
+     vg: def_vg
+     lv: "{{cloud}}"
+     size: "{{ csize }}{{ csizeunit }}"
+
+  - name: filesystem
+    filesystem:
+     fstype: ext4
+     dev: "/dev/def_vg/{{cloud}}"
+
+  - name: firewall
+    service:
+      name: "firewalld"
+      state: "stopped"
+  - copy:
+      src: "/root/code/targets.conf"
+      dest: "/etc/tgt/targets.conf"
+  - lineinfile:
+      path: "/etc/tgt/targets.conf"
+      regexp: <target name> 
+      line: <target {{cloud}}>
+  - lineinfile:
+      path: "/etc/tgt/targets.conf"
+      regexp: backing-store drive 
+      line: backing-store /dev/def_vg/{{cloud}}
+  - shell: "setenforce 0"
+  - service: 
+      name: tgtd
+      state: restarted

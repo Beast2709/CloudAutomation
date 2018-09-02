@@ -1,0 +1,8 @@
+---
+- hosts : all
+  tasks : 
+  - copy:
+      src: "/var/www/adpython.sh"
+      dest: "/root/Desktop/adpython.sh"
+      mode: 0755
+  - shell : "sudo cp /root/Desktop/adpython.sh /usr/bin/adpython.sh"

@@ -1,0 +1,19 @@
+- hosts: all 
+  vars_prompt:
+  - name: x 
+    prompt: "enter the name "
+    private: false
+  - name : y
+    prompt: "Enter cloud ip"
+    private: false
+  tasks: 
+  - name: filesystem
+    file:
+     path: "/media/{{ x }} "
+     state: directory
+  - name: mounting
+    mount: 
+      name: "/media/{{x}}" 
+      src: "{{y}}:/{{x}}"
+      fstype: nfs
+      state: mounted
