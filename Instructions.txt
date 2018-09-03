@@ -4,7 +4,9 @@ Put the .html and the .jpg and .png files in the /var/www/html/ folder
 
 Put the ad.sh and adpython.sh in the /var/www/ folder
 
-Install docker-ce and Ansible in your RHEL/Centos System 
+Install docker-ce and Ansible in your RHEL/Centos server System 
+
+Configure the Yum/apt in the normal client linux systems
 
 Load the docker images in your system using : docker load -i <tarfilepath/tarfilename.tar> 
 The .tar files are the docker image tar files, you can copy them anywhere.
