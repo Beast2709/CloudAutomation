@@ -1,0 +1,16 @@
+Put the .py files andthe yml file in the /var/www/cgi-bin/ folder
+
+Put the .html and the .jpg and .png files in the /var/www/html/ folder
+
+Put the ad.sh and adpython.sh in the /var/www/ folder
+
+Install docker-ce and Ansible in your RHEL/Centos System 
+
+Load the docker images in your system using : docker load -i <tarfilepath/tarfilename.tar> 
+The .tar files are the docker image tar files, you can copy them anywhere.
+
+Change the ips (192.168.43.86 is the server ip in my case) in the ansible hosts file : /etc/ansible/hosts  and the few files where ips have been used .. also the .sh files with the server ip where you put all the files
+
+replace your original file /etc/ansible/ansible.cfg with the ansible.cfg in the repo
+
+Run the project
